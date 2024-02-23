@@ -1,0 +1,22 @@
+---
+# tasks file for webserver
+- name: Install HTTPD
+  package:
+    name: httpd
+    state: present
+
+- name: Start and enable HTTPD service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Install load balancer (e.g. HAProxy)
+  package:
+    name: haproxy
+    state: present
+
+- name: Copy file.txt
+  copy:
+    src: file.txt
+    dest: /var/www/html
